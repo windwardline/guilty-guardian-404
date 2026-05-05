@@ -1,0 +1,412 @@
+@import url('[https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@700;900&display=swap](https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@700;900&display=swap)');
+
+:root {
+    --stroke: #1e293b;
+    --fur: #ffffff;
+    --fur-shade: #cbd5e1;
+    --dirt: #92400e;
+    --dirt-shade: #713f12;
+    --dirt-dark: #451a03;
+    --grass: #4ade80;
+    --grass-shade: #22c55e;
+    --sky: #38bdf8;
+    --sky-light: #bae6fd;
+    --button: #ef4444;
+    --button-shade: #b91c1c;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    background-color: var(--sky);
+}
+
+/* Cartoon Landscape */
+.sky {
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 60%;
+    background: linear-gradient(to bottom, var(--sky) 0%, var(--sky-light) 100%);
+    z-index: -2;
+}
+
+.grass {
+    position: absolute;
+    top: 60%; left: 0; right: 0; bottom: 0;
+    background: var(--grass);
+    border-top: 6px solid var(--stroke);
+    z-index: -2;
+    background-image: repeating-linear-gradient(to right, transparent, transparent 40px, rgba(0,0,0,0.05) 40px, rgba(0,0,0,0.05) 80px);
+}
+
+/* Cartoon Clouds */
+.cloud {
+    position: absolute;
+    background: #fff;
+    border: 4px solid var(--stroke);
+    border-radius: 50px;
+    box-shadow: inset -5px -5px 0 #e2e8f0;
+}
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border: 4px solid var(--stroke);
+    border-radius: 50%;
+    z-index: -1;
+}
+.c1 { width: 120px; height: 40px; top: 15%; left: 10%; }
+.c1::before { width: 60px; height: 60px; top: -30px; left: 15px; border-bottom: none; }
+.c1::after { width: 40px; height: 40px; top: -15px; left: 65px; border-bottom: none; }
+
+.c2 { width: 160px; height: 50px; top: 25%; right: 15%; transform: scale(0.8); }
+.c2::before { width: 70px; height: 70px; top: -35px; left: 20px; border-bottom: none; }
+.c2::after { width: 50px; height: 50px; top: -20px; left: 80px; border-bottom: none; }
+
+/* Typography */
+h1 { 
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Chewy', cursive;
+    font-size: 5.5rem; 
+    color: #000; 
+    margin: 0; 
+    text-shadow: 
+        4px 4px 0 #fff,
+        -4px -4px 0 #fff,
+        4px -4px 0 #fff,
+        -4px 4px 0 #fff,
+        0 10px 0 #fff;
+    letter-spacing: 3px;
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+.text-container {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    z-index: 10;
+}
+
+p { 
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.3rem; 
+    font-weight: 900;
+    color: #fff; 
+    line-height: 1.4;
+    margin: 0 auto;
+    text-shadow: 
+        3px 3px 0 var(--stroke), 
+        -3px -3px 0 var(--stroke), 
+        3px -3px 0 var(--stroke), 
+        -3px 3px 0 var(--stroke);
+    height: 60px;
+}
+
+/* Cartoon Dog Layout */
+.dog-wrapper {
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 200px;
+    z-index: 5;
+}
+
+/* The Dirt Mound */
+.dirt-mound {
+    width: 320px;
+    height: 80px;
+    background: var(--dirt);
+    border: 6px solid var(--stroke);
+    border-radius: 50% 50% 15% 15% / 100% 100% 15% 15%;
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset -15px -15px 0 var(--dirt-shade);
+    z-index: 4;
+}
+
+.hole {
+    width: 180px;
+    height: 30px;
+    background: var(--dirt-dark);
+    border: 4px solid var(--stroke);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+/* Cartoon Paws */
+.paw {
+    position: absolute;
+    bottom: 15px;
+    width: 50px;
+    height: 60px;
+    background: var(--fur);
+    border: 5px solid var(--stroke);
+    border-radius: 30px;
+    z-index: 6;
+    box-shadow: inset -8px -8px 0 var(--fur-shade);
+}
+.paw.left { left: 70px; transform: rotate(-20deg); }
+.paw.right { right: 70px; transform: rotate(20deg); }
+
+/* Dog Body */
+.pyrenees-body {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 160px;
+    background: var(--fur);
+    border: 6px solid var(--stroke);
+    border-radius: 50% 50% 20% 20% / 60% 60% 30% 30%;
+    box-shadow: inset -20px -20px 0 var(--fur-shade);
+    z-index: 2;
+}
+
+.tail {
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    width: 60px;
+    height: 100px;
+    background: var(--fur);
+    border: 6px solid var(--stroke);
+    border-radius: 50% 50% 50% 50%;
+    z-index: 1;
+    transform-origin: bottom left;
+    animation: wag 0.3s infinite alternate ease-in-out;
+    box-shadow: inset -10px -10px 0 var(--fur-shade);
+}
+
+/* Dog Head */
+.pyrenees-head {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 140px;
+    background: var(--fur);
+    border: 6px solid var(--stroke);
+    border-radius: 45%;
+    box-shadow: inset -15px -15px 0 var(--fur-shade);
+    z-index: 3;
+}
+
+.ear {
+    position: absolute;
+    top: 20px;
+    width: 55px;
+    height: 90px;
+    background: var(--fur);
+    border: 6px solid var(--stroke);
+    border-radius: 40% 40% 50% 50%;
+    z-index: -1;
+    box-shadow: inset -10px -10px 0 var(--fur-shade);
+}
+.ear.left { left: -25px; transform: rotate(20deg); animation: earTwitchLeft 4s infinite; }
+.ear.right { right: -25px; transform: rotate(-20deg); }
+
+/* Cartoon Eyes */
+.eye {
+    position: absolute;
+    top: 35px;
+    width: 32px;
+    height: 42px;
+    background: #fff;
+    border: 5px solid var(--stroke);
+    border-radius: 50%;
+    z-index: 4;
+    overflow: hidden;
+    animation: blink 4s infinite;
+}
+.eye.left { left: 35px; }
+.eye.right { right: 35px; }
+
+.pupil {
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    width: 16px;
+    height: 20px;
+    background: var(--stroke);
+    border-radius: 50%;
+    animation: guiltyLook 4s infinite;
+}
+.pupil::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 6px; height: 6px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+/* Cartoon Snout */
+.snout {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 60px;
+    background: var(--fur);
+    border: 5px solid var(--stroke);
+    border-radius: 45%;
+    z-index: 5;
+    box-shadow: inset -10px -10px 0 var(--fur-shade);
+}
+
+.nose {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 22px;
+    background: var(--stroke);
+    border-radius: 50% 50% 40% 40%;
+}
+.nose::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 8px;
+    width: 12px; height: 4px;
+    background: #fff;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+
+.dirt-smudge {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    width: 30px;
+    height: 20px;
+    background: var(--dirt);
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* Dirt Clods */
+.dirt-spray {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 60px;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.dirt-clod {
+    position: absolute;
+    background: var(--dirt);
+    border: 4px solid var(--stroke);
+    border-radius: 50%;
+    box-shadow: inset -4px -4px 0 var(--dirt-shade);
+}
+
+.clod-1 { width: 24px; height: 24px; left: 10%; bottom: 15px; }
+.clod-2 { width: 30px; height: 30px; left: 85%; bottom: 20px; }
+.clod-3 { width: 16px; height: 16px; left: 30%; bottom: 45px; }
+.clod-4 { width: 20px; height: 20px; left: 70%; bottom: 10px; }
+.clod-5 { width: 18px; height: 18px; left: 5%; bottom: 35px; }
+
+@keyframes guiltyLook {
+    0%, 20% { transform: translate(0, 0); }
+    30%, 40% { transform: translate(-4px, 2px); }
+    50%, 60% { transform: translate(4px, -2px); }
+    70%, 100% { transform: translate(0, 0); }
+}
+@keyframes blink {
+    0%, 48%, 52%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+}
+@keyframes wag {
+    0% { transform: rotate(10deg); }
+    100% { transform: rotate(40deg); }
+}
+@keyframes earTwitchLeft {
+    0%, 90% { transform: rotate(20deg); }
+    92% { transform: rotate(35deg); }
+    95% { transform: rotate(15deg); }
+    100% { transform: rotate(20deg); }
+}
+
+/* Cartoon Button */
+.interaction-zone {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 90px;
+    width: 300px;
+    z-index: 10;
+}
+
+button {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -110px; 
+    padding: 15px 40px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: var(--button);
+    color: #ffffff;
+    border: 6px solid var(--stroke);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 10px 0 var(--stroke);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
+
+button svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+/* Success State */
+.success-text {
+    color: #fff;
+    text-shadow: 
+        3px 3px 0 var(--grass-shade), 
+        -3px -3px 0 var(--grass-shade), 
+        3px -3px 0 var(--grass-shade), 
+        -3px 3px 0 var(--grass-shade),
+        0 8px 0 var(--stroke);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
